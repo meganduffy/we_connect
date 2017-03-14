@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Thanks for buying my item :)</h1>
+    <h1>Thanks, {{ post.first_name }} for buying my item :)</h1>
+    <h3>You have now purchased {{ post.item_name }}</h3>
+    <h4>Your payment of {{ post.payment_gross }} was successfully paid to {{ post.receiver_email }}</h4>
+    <div style="display:none">
+        <h2>POST</h2>
+        {{ post }}
 
-    <h2>POST</h2>
-    {{ post }}
-
-    <h2>GET</h2>
-    {{ get }}
+        <h2>GET</h2>
+        {{ get }}
+    </div>
 {% endblock %}

@@ -25,7 +25,7 @@ SECRET_KEY = 'a262yrtpy15x9q6xjr5=-hp2#7b&*oqjantw(6j0!p9b6vc4um'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'http://c6be8b56.ngrok.io']
 
 
 # Application definition
@@ -142,5 +142,5 @@ AUTHENTICATION_BACKENDS = (
 
 # Paypal Settings
 SITE_URL = 'http://127.0.0.1:8000'
-PAYPAL_NOTIFY_URL = 'http://127.0.0.1/a-very-hard-to-guess-url/'
+PAYPAL_NOTIFY_URL = 'http://c6be8b56.ngrok.io/a-very-hard-to-guess-url/'
 PAYPAL_RECEIVER_EMAIL = 'meganemilyduffy@gmail.com'
