@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'paypal_store',
     'products',
     'magazines',
+    'reusable_blogprj',
+    'disqus',
 ]
 
 MIDDLEWARE = [

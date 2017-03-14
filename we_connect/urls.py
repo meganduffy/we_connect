@@ -21,6 +21,7 @@ from paypal.standard.ipn import urls as paypal_urls
 from paypal_store import views as paypal_views
 from products import views as product_views
 from magazines import views as magazine_views
+from reusable_blogprj import urls as blog_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -43,4 +44,7 @@ urlpatterns = [
 
     # Magazines
     url(r'^magazines/$', magazine_views.all_magazines, name='magazines'),
+
+    # Blog
+    url(r'^blog/', include(blog_urls)),
 ]
