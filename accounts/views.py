@@ -4,6 +4,8 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
+from magazines.models import Purchase, Magazine
+from django.utils import timezone
 
 
 def register(request):
@@ -33,7 +35,11 @@ def register(request):
 
 @login_required(login_url='/login/')
 def profile(request):
-    return render(request, 'profile.html')
+    Purchase.magazine_id = Magazine.name
+    # TODO: Filter purchases to be in date and in order of most recent
+    purchases = Purchase.objects.all()
+    magazines = Magazine.objects.all()
+    return render(request, 'profile.html', {'purchases': purchases, 'magazines': magazines})
 
 
 def login(request):

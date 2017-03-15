@@ -3,4 +3,21 @@
     <h2>Success!</h2>
     <p>You are logged in as {{ user.email }} </p>
     <p>Your last login was {{ user.previous_login }}</p>
+    <p>You joined: {{ user.date_joined }}</p>
+    <p>User ID: {{ user.id }}</p>
+    {% if purchases %}
+
+        {% for purchase in purchases %}
+
+            {% if user.id == purchase.user_id %}
+
+                <p> Your subscription to {{ purchase.magazine_id }} ends : {{ purchase.subscription_end }}</p>
+
+            {% endif %}
+
+        {% endfor %}
+
+    {% else %}
+        <h3>You have no subscriptions</h3>
+    {% endif %}
 {% endblock %}
