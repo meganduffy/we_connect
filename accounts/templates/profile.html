@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
     <h2>Success!</h2>
-    <p>You are logged in as {{ user.email }} </p>
-    <p>Your last login was {{ user.previous_login }}</p>
+    <p>Welcome back {{ user.email }} </p>
+    <p>Your last login was: {{ user.previous_login }}</p>
     <p>You joined: {{ user.date_joined }}</p>
-    <p>User ID: {{ user.id }}</p>
+    <br>
+    <h4>Subscriptions</h4>
     {% if purchases %}
 
         {% for purchase in purchases %}
 
-            {% if user.id == purchase.user_id %}
-
-                <p> Your subscription to {{ purchase.magazine_id }} ends : {{ purchase.subscription_end }}</p>
-
-            {% endif %}
+            <p> Your subscription to {{ purchase.magazine }} ends: {{ purchase.subscription_end }}</p>
 
         {% endfor %}
 
     {% else %}
-        <h3>You have no subscriptions</h3>
+
+        <h3>You have no active subscriptions</h3>
+
     {% endif %}
+
 {% endblock %}

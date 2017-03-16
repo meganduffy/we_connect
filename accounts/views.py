@@ -35,10 +35,10 @@ def register(request):
 
 @login_required(login_url='/login/')
 def profile(request):
-    Purchase.magazine_id = Magazine.name
-    # TODO: Filter purchases to be in date and in order of most recent
-    purchases = Purchase.objects.all()
-    magazines = Magazine.objects.all()
+    purchases = Purchase.objects.filter(user=request.user
+                                        ).exclude(subscription_end__lte=timezone.now()
+                                        ).order_by('subscription_end')
+    magazines = {p.magazine for p in purchases}
     return render(request, 'profile.html', {'purchases': purchases, 'magazines': magazines})
 
 
