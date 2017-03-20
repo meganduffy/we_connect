@@ -39,9 +39,8 @@ class User(AbstractUser):
         except Exception:
             return False
 
-        if purchase.subscription_end > timezone.now():
+        if purchase.subscription_end < timezone.now():
             return False
-
         return True
 
 
