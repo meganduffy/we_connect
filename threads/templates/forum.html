@@ -3,10 +3,10 @@
 {% block content %}
     {% load bootstrap_tags %}
     {% for subject in subjects %}
+        <hr>
+        <section class="subject"  style="background-color:#d6ebf2;  padding:15px 0px; text-align:center">
 
-        <section class="subject">
-
-            <h2><a href="{% url "threads" subject.id %}">
+            <h2><a href="{% url "threads" subject.id %}"  style="text-decoration:underline;">
                 {{ subject.name }}
             </a></h2>
 
@@ -14,9 +14,9 @@
                 {% autoescape off %}{{ subject.description }}{% endautoescape %}
             </a></p>
 
-            <table>
+            <table align="center">
                 <tr>
-                    <th>THREADS</th>
+                    <th style="padding-right:20px;">THREADS</th>
                     <th>POSTS</th>
                 </tr>
                 <tr>

@@ -2,7 +2,7 @@
 {% load thread_extras %}
 {% block content %}
     <div class="row header">
-        <div class="jumbotron"><h1>{{ subject.name }}</h1></div>
+        <div class="jumbotron" style="background-color:#d6ebf2;"><h1>{{ subject.name }}</h1></div>
     </div>
     <div class="col-sm-12">
         {% if user.is_authenticated %}
@@ -11,7 +11,14 @@
             </p>
         {% endif %}
         {% for thread in subject.threads.all %}
+            <hr>
             {% include "thread_item.html" %}
         {% endfor %}
+        {% if user.is_authenticated %}
+            <hr>
+            <p>
+                <a href="{% url 'new_thread' subject.id %}" class="btn btn-primary">New Thread</a>
+            </p>
+        {% endif %}
     </div>
 {% endblock %}

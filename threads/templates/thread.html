@@ -10,37 +10,38 @@
             <div class="col-sm-12">
                 <table class="table">
                     <tbody>
-                        <tr>
-                            <th>CREATED</th>
-                            <th>OWNER</th>
-                            <th>LAST POST</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <time datetime="{{ thread.created_at }}">
-                                    {{ thread.created_at| started_time }}
-                                </time>
-                            </td>
-                            <td>{{ thread.username }}</td>
-                            <td>{% last_posted_user_name thread %}</td>
-                        </tr>
+                    <tr>
+                        <th>CREATED</th>
+                        <th>OWNER</th>
+                        <th>LAST POST</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <time datetime="{{ thread.created_at }}">
+                                {{ thread.created_at| started_time }}
+                            </time>
+                        </td>
+                        <td>{{ thread.user }}</td>
+                        <td>{% last_posted_user_name thread %}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
 
-            {% if user.is_authenticated %}
-                <p>
-                    <a href="{% url 'new_post' thread.id %}" class="btn btn-primary">New Post</a>
-                </p>
-            {% endif %}
 
         </div>
     </div>
 
     <div class="container">
-    {% for post in thread.posts.all %}
-        {% include 'post.html' %}
-    {% endfor %}
+        {% for post in thread.posts.all %}
+            {% include 'post.html' %}
+        {% endfor %}
     </div>
+
+    {% if user.is_authenticated %}
+        <p>
+            <a href="{% url 'new_post' thread.id %}" class="btn btn-primary">Post Comment</a>
+        </p>
+    {% endif %}
 
 {% endblock %}

@@ -22,7 +22,15 @@ class Purchase(models.Model):
 
 
 from signals import subscription_created, subscription_was_cancelled
-from paypal.standard.ipn.signals import valid_ipn_received
+from paypal.standard.ipn.signals import valid_ipn_received, invalid_ipn_received
 
 valid_ipn_received.connect(subscription_created)
+
+
+def invalid_handler(sender, **kwargs):
+    ipn_obj = sender
+    print "I got an invalid ipn signal"
+
+
+invalid_ipn_received.connect(invalid_handler)
 # valid_ipn_received.connect(subscription_was_cancelled)

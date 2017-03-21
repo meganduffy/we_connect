@@ -16,13 +16,7 @@
                 <td>{{ magazine.name }}</td>
                 <td>{{ magazine.description }}</td>
                 <td>${{ magazine.price }}</td>
-
-                {#            TODO: FIX THIS WHOLE THING!!!#}
-{#                {% if user.is_subscribed %}#}
-{#                    <td>Subscribed</td>#}
-{#                {% else %}#}
-                    <td>{% paypal_form_for magazine user %}</td>
-{#                {% endif %}#}
+                <td>{% paypal_form_for magazine user %}</td>
             </tr>
         {% endfor %}
         </tbody>

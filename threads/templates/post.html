@@ -1,17 +1,19 @@
 {% load staticfiles %}
 {% load emoticons_tags %}
-<section class="row comment col-sm-9">
-    <div class="col-sm-3 comment-profile">
+<section class="row comment col-sm-9" style="display:flex; flex-flow: row nowrap; justify-content: center; align-items: center;">
+    <div class="col-sm-3 comment-profile" style="flex:1;" >
         <p><img src="{% static 'images/user.png' %}" /></p>
-        <p>{{ post.user.username }}</p>
+        <p style="font-weight: bold">{{ post.user.username }}</p>
         <p>{{ post.user.posts.count }} POST</p>
+        <hr>
     </div>
-    <div class="col-sm-9">
-        <div class="comment-content">
+    <div class="col-sm-9" style="background-color:#d6ebf2; padding: 10px;">
+        <div class="comment-content" style="flex:1;" >
             {% autoescape off %}
                 {{ post.comment | emoticons }}
             {% endautoescape %}
         </div>
         {% include "comment_details.html" %}
+
     </div>
 </section>

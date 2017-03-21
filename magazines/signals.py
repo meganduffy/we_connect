@@ -6,13 +6,14 @@ from django.contrib import messages
 
 def subscription_created(sender, **kwargs):
     ipn_obj = sender
-    if ipn_obj.payment_status:
+    print ipn_obj
+    if ipn_obj.payment_status == ST_PP_COMPLETED:
         print "payment status is: %s" % ipn_obj.payment_status
         magazine_id = ipn_obj.custom.split('-')[0]
         user_id = ipn_obj.custom.split('-')[1]
 
-        purchase = Purchase.objects.get(user_id=user_id,
-                                        magazine_id=magazine_id).first()
+        purchase = Purchase.objects.filter(user_id=user_id,
+                                           magazine_id=magazine_id).first()
         if purchase:
             purchase.subscription_end = arrow.now().replace(weeks=+4).datetime
         else:
@@ -22,8 +23,8 @@ def subscription_created(sender, **kwargs):
         purchase.save()
 
     else:  # TODO: what to do if payment status not complete
-        assert not ipn_obj.payment_status
-        messages.error("Your transaction was not completed")
+        # assert not ipn_obj.payment_status
+        # messages.error("Your transaction was not completed")
         print "Payment didn't go through"
 
 
