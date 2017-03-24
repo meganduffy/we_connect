@@ -14,9 +14,20 @@
         <div class="col-sm-9">
             <form method="post" action="{% url 'new_thread' subject.id %}">
                 {% csrf_token %}
-                {{ thread_form| as_bootstrap }}
-                <hr>
-                {{ post_form| as_bootstrap }}
+
+                <div class="form-group">
+                    {{ thread_form| as_bootstrap }}
+                    <hr>
+                    {{ post_form| as_bootstrap }}
+                </div>
+
+                <div id="poll_form" class="form-group">
+                    {{ poll_form| as_bootstrap }}
+                    {{ poll_subject_formset.management_form }}
+                    {% for poll_subject_form in poll_subject_formset %}
+                        {{ poll_subject_form| as_bootstrap }}
+                    {% endfor %}
+                </div>
 
                 <div class="form-group">
                     <button type="submit" class="btn-primary">Post New Thread</button>
@@ -24,4 +35,21 @@
             </form>
         </div>
     </section>
+    <script>
+    $(function() {
+        if (!$('#id_is_a_poll').is('checked')) {
+            $('#poll_form').hide()
+        }
+
+        $('#id_is_a_poll').click(function(el) {
+            var poll_form = $('#poll_form')
+
+            if (poll_form.is(":visible")) {
+                poll_form.hide()
+            } else {
+                poll_form.show()
+            }
+        })
+    })
+    </script>
 {% endblock %}

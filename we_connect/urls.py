@@ -59,6 +59,8 @@ urlpatterns = [
     url(r'^post/new/(?P<thread_id>\d+)/$', forum_views.new_post, name='new_post'),
     url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.edit_post, name='edit_post'),
     url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.delete_post, name='delete_post'),
+    # Forum Poll Voting
+    url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', forum_views.thread_vote, name='cast_vote'),
 ]
 
 if settings.DEBUG:
