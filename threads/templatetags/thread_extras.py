@@ -1,6 +1,7 @@
 import arrow
 from django import template
 from django.core.urlresolvers import reverse
+from django.utils.safestring import mark_safe
 
 
 register = template.Library()
@@ -31,16 +32,18 @@ def user_vote_button(thread, subject, user):
 
     if not vote:
         if user.is_authenticated():
-            link = """"
+            add_vote = """
             <div class="col-sm-3 btn-vote">
-            <a href="%s" class="btn btn-default btn-sm">
-                Add my vote!
-            </a>
-            </div>""" % reverse('cast_vote', kwargs={'thread_id': thread.id, 'subject_id': subject.id})
+                <a href="%s" class="btn btn-default btn-sm">
+                    Add my vote!
+                </a>
+            </div>""" % reverse('cast_vote', kwargs={'thread_id': thread.id,
+                                                     'subject_id': subject.id})
+            link = mark_safe(add_vote)
 
             return link
 
-        return ""
+    return ""
 
 
 @register.filter

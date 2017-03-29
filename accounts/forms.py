@@ -30,6 +30,13 @@ class UserRegistrationForm(UserCreationForm):
 
         return password2
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        if not email:
+            message = "Please enter your email address"
+            raise forms.ValidationError(message)
+
     def save(self, commit=True):
         instance = super(UserRegistrationForm, self).save(commit=False)
 
