@@ -2,7 +2,11 @@
 {% load emoticons_tags %}
 <section class="row comment col-sm-9" style="display:flex; flex-flow: row nowrap; justify-content: center; align-items: center;">
     <div class="col-sm-3 comment-profile" style="flex:1;" >
-        <p><img src="media/profile_images/{{ post.user.image }}" /></p>
+        {% if post.user.image %}
+            <p><img src="/media/{{ post.user.image }}" class="post-profo-pic"/></p>
+        {% else %}
+            <p><img src="{% static "images/default-profile-img.jpg" %}" /></p>
+        {% endif %}
         <p style="font-weight: bold">{{ post.user.username }}</p>
         <p>{{ post.user.posts.count }} POST</p>
         <hr>

@@ -16,7 +16,7 @@
             {% for product in products %}
                 <tr>
                     {% if product.image %}
-                        <td><img src="/media/{{ post.image }}"></td>
+                        <td><img src="/media/{{ product.image }}" class="product-pic"></td>
                     {% endif %}
                     <td>{{ product.name }}</td>
                     <td>{{ product.description }}</td>

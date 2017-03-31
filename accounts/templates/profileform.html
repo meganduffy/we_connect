@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+{% block content %}
+    <form role="form" method="post" action="{% url 'edit_profile' %}" enctype="multipart/form-data">
+        <legend>Edit Profile</legend>
+        {% csrf_token %}
+        {{ profile }}
+        <img src="{{ profile.instance.image }}" />
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Update Profile</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,11 +1,13 @@
 from django.contrib import messages, auth
-from accounts.forms import UserRegistrationForm, UserLoginForm
+from accounts.models import User
+from accounts.forms import UserRegistrationForm, UserLoginForm, UserProfileForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from magazines.models import Purchase, Magazine
 from django.utils import timezone
+from django.http import HttpResponse
 
 
 def register(request):
@@ -40,6 +42,23 @@ def profile(request):
                                         ).order_by('subscription_end')
     magazines = {p.magazine for p in purchases}
     return render(request, 'profile.html', {'purchases': purchases, 'magazines': magazines})
+
+
+@login_required(login_url='/login/')
+def edit_profile(request):
+    try:
+        profile = User.objects.get(user=request.user)
+    except User.DoesNotExist:
+        return HttpResponse("Invalid user profile")
+
+    if request.method == "POST":
+        profile_form = UserProfileForm(request.POST, request.FILES, instance=profile)
+        if profile_form.is_valid():
+            profile.save()
+            return redirect(profile)
+    else:
+        profile_form = UserProfileForm()
+    return render(request, 'profileform.html', {'profile': profile})
 
 
 def login(request):

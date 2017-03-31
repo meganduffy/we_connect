@@ -4,7 +4,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <td>Image</td>
+            <th>Image</th>
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
@@ -15,9 +15,9 @@
         {% for magazine in magazines %}
             <tr>
                 {% if magazine.image %}
-                    <td><img src="'media/{{ magazine.image }}"></td>
+                    <td><img src="/media/{{ magazine.image }}" class="magazine-pic"></td>
                 {% endif %}
-                <td>{{ magazine.name }}</td>
+                <td><strong>{{ magazine.name }}</strong></td>
                 <td>{{ magazine.description }}</td>
                 <td>${{ magazine.price }}</td>
                 <td>{% paypal_form_for magazine user %}</td>

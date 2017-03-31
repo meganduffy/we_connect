@@ -47,6 +47,7 @@ urlpatterns = [
     url(r'^profile/$', accounts_views.profile, name='profile'),
     url(r'^login/$', accounts_views.login, name='login'),
     url(r'^logout/$', accounts_views.logout, name='logout'),
+    url(r'^profile/editprofile/$', accounts_views.edit_profile, name='edit_profile'),
 
     # Paypal
     url(r'^a-very-hard-to-guess-url/', include(paypal_urls)),
