@@ -66,6 +66,7 @@ def login(request):
 
             if user is not None:
                 user.previous_login = user.last_login
+                user.save()
                 auth.login(request, user)
                 messages.error(request, "You have successfully logged in")
                 return redirect(reverse('profile'))
