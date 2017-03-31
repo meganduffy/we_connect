@@ -11,5 +11,5 @@ DATABASES = {
 
 # Paypal environment variables
 SITE_URL = 'https://we-connect.herokuapp.com/'
-PAYPAL_NOTIFY_URL = 'https://we-connect.herokuapp.com//a-very-hard-to-guess-url/'
+PAYPAL_NOTIFY_URL = 'https://we-connect.herokuapp.com/a-very-hard-to-guess-url/'
 PAYPAL_RECEIVER_EMAIL = 'meganemilyduffy@gmail.com'
