@@ -4,6 +4,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <td>Image</td>
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
@@ -13,6 +14,9 @@
         <tbody>
         {% for magazine in magazines %}
             <tr>
+                {% if magazine.image %}
+                    <td><img src="'media/{{ magazine.image }}"></td>
+                {% endif %}
                 <td>{{ magazine.name }}</td>
                 <td>{{ magazine.description }}</td>
                 <td>${{ magazine.price }}</td>

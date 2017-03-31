@@ -10,7 +10,7 @@ from django.utils import timezone
 class AccountUserManager(UserManager):
 
     def create_user(self, username, email,
-                    password, is_staff, is_superuser, **extra_fields):
+                    password, is_staff, is_superuser, image, **extra_fields):
         """
         Creates and save a User with the given username, email and password
         """
@@ -22,7 +22,7 @@ class AccountUserManager(UserManager):
         user = self.model(username=email, email=email,
                           is_staff=is_staff, is_active=True,
                           is_superuser=is_superuser,
-                          date_joined=now, **extra_fields)
+                          date_joined=now, image=image, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
 
@@ -32,6 +32,7 @@ class AccountUserManager(UserManager):
 class User(AbstractUser):
     objects = AccountUserManager()
     previous_login = models.DateTimeField(default=timezone.now)
+    image = models.ImageField(upload_to='profile_images', blank=True, null=True)
 
     def is_subscribed(self, magazine):
         try:

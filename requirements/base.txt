@@ -1,7 +1,6 @@
 arrow==0.10.0
 beautifulsoup4==4.5.3
 Django==1.10.6
-django-debug-toolbar==1.7
 django-disqus==0.5
 django-emoticons==1.2
 djangorestframework==3.3
@@ -20,3 +19,4 @@ git+https://github.com/meganduffy/reusable_blogprj_app.git
 six==1.10.0
 sqlparse==0.2.3
 wheel==0.24.0
+gunicorn==19.4

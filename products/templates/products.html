@@ -3,6 +3,9 @@
     <table class="table table-striped">
         <thead>
             <tr>
+
+                    <th>Image</th>
+
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
@@ -12,6 +15,9 @@
         <tbody>
             {% for product in products %}
                 <tr>
+                    {% if product.image %}
+                        <td><img src="/media/{{ post.image }}"></td>
+                    {% endif %}
                     <td>{{ product.name }}</td>
                     <td>{{ product.description }}</td>
                     <td>${{ product.price }}</td>

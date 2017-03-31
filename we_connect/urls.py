@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
+from django.views.static import serve
+from settings.base import MEDIA_ROOT
 from hello import views as hello_views
 from accounts import views as accounts_views
 from paypal.standard.ipn import urls as paypal_urls
@@ -27,9 +29,18 @@ from threads import views as forum_views
 
 
 urlpatterns = [
+    #Admin
     url(r'^admin/', admin.site.urls),
+
+    # Media
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT, 'show_indexes': True}),
+
+    # Landing page
     url(r'^$', hello_views.get_index, name='index'),
+
+    # Flatpages
     url(r'^pages/', include('django.contrib.flatpages.urls')),
+
 
     # Accounts
     url(r'^register/$', accounts_views.register, name='register'),

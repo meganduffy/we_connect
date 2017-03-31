@@ -1,0 +1,1 @@
+web: gunicorn we_connect.wsgi:application

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-    <form role="form" method="post" action="{% url 'register' %}">
+    <form role="form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
         <legend>Create a new account</legend>
         {% csrf_token %}
         {{ form| as_bootstrap }}

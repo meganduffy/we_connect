@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'a262yrtpy15x9q6xjr5=-hp2#7b&*oqjantw(6j0!p9b6vc4um'
 
 ALLOWED_HOSTS = []
-SITE_ID = 2
+SITE_ID = 3
 
 # Application definition
 INSTALLED_APPS = [
@@ -72,6 +72,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'we_connect.wsgi.application'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
