@@ -1,4 +1,5 @@
 from base import *
+import dj_database_url
 
 DEBUG = True
 
@@ -8,6 +9,8 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+DATABASES['default'] = dj_database_url.config("mysql://be7e855bf7d62c:66cc4b48@eu-cdbr-west-01.cleardb.com/heroku_f373066c6c1d6bc?")
 
 ALLOWED_HOSTS = ['we-connect.herokuapp.com']
 
