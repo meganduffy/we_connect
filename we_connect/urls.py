@@ -34,6 +34,7 @@ urlpatterns = [
 
     # Media
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT, 'show_indexes': True}),
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 
     # Landing page
     url(r'^$', hello_views.get_index, name='index'),
