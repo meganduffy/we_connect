@@ -60,5 +60,5 @@ class UserProfileForm(forms.ModelForm):
         fields = ['image']
 
     image = forms.ImageField(
-        label="New Profile Image"
+        label="Select New Profile Picture"
     )

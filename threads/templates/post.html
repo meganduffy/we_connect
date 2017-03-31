@@ -3,9 +3,9 @@
 <section class="row comment col-sm-9" style="display:flex; flex-flow: row nowrap; justify-content: center; align-items: center;">
     <div class="col-sm-3 comment-profile" style="flex:1;" >
         {% if post.user.image %}
-            <p><img src="/media/{{ post.user.image }}" class="post-profo-pic"/></p>
+            <p><img src="/media/{{ post.user.image }}" class="profo-pic"/></p>
         {% else %}
-            <p><img src="{% static "images/default-profile-img.jpg" %}" /></p>
+            <p><img src="{% static "images/default-profile-img.jpg" %}" class ="profo-pic"/></p>
         {% endif %}
         <p style="font-weight: bold">{{ post.user.username }}</p>
         <p>{{ post.user.posts.count }} POST</p>

@@ -4,7 +4,13 @@
     <p>Welcome back {{ user.email }} </p>
     <p>Your last login was: {{ user.previous_login }}</p>
     <p>You joined: {{ user.date_joined }}</p>
-    <br>
+    {% if user.image %}
+        <p>Profile Picture:</p>
+        <img src="/media/{{ user.image }}" class="profo-pic"/>
+    {% endif %}
+    <br><br>
+    <button class="btn btn-success" onclick="location.href='editprofile'">Edit Profile</button>
+    <br><br>
     <h4>Subscriptions</h4>
     {% if purchases %}
 
@@ -19,7 +25,5 @@
         <h3>You have no active subscriptions</h3>
 
     {% endif %}
-
-    <button class="btn btn-success" onclick="location.href='editprofile'">Edit Profile</button>
 
 {% endblock %}

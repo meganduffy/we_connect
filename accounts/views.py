@@ -46,19 +46,15 @@ def profile(request):
 
 @login_required(login_url='/login/')
 def edit_profile(request):
-    try:
-        profile = User.objects.get(user=request.user)
-    except User.DoesNotExist:
-        return HttpResponse("Invalid user profile")
 
     if request.method == "POST":
-        profile_form = UserProfileForm(request.POST, request.FILES, instance=profile)
+        profile_form = UserProfileForm(request.POST, request.FILES, instance=request.user)
         if profile_form.is_valid():
-            profile.save()
+            profile_form.save()
             return redirect(profile)
     else:
         profile_form = UserProfileForm()
-    return render(request, 'profileform.html', {'profile': profile})
+    return render(request, 'profileform.html', {'profile_form': profile_form})
 
 
 def login(request):

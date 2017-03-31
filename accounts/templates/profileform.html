@@ -4,8 +4,17 @@
     <form role="form" method="post" action="{% url 'edit_profile' %}" enctype="multipart/form-data">
         <legend>Edit Profile</legend>
         {% csrf_token %}
-        {{ profile }}
-        <img src="{{ profile.instance.image }}" />
+
+        <p><strong>Old Profile Picture</strong></p>
+        {% if user.image %}
+            <img src="/media/{{ user.image }}" class="profo-pic"/>
+        {% endif %}
+
+        <br><br>
+
+        {{ profile_form | as_bootstrap }}
+
+
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Update Profile</button>
         </div>
