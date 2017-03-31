@@ -75,8 +75,8 @@ urlpatterns = [
     url(r'^thread/vote/(?P<thread_id>\d+)/(?P<subject_id>\d+)/$', forum_views.thread_vote, name='cast_vote'),
 ]
 
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns += [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
-    ]
+# if settings.DEBUG:
+#     import debug_toolbar
+#     urlpatterns += [
+#         url(r'^__debug__/', include(debug_toolbar.urls)),
+#     ]
