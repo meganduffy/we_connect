@@ -10,7 +10,12 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.config("mysql://be7e855bf7d62c:66cc4b48@eu-cdbr-west-01.cleardb.com/heroku_f373066c6c1d6bc?")
+DATABASES['default'] = dj_database_url.config(
+    "mysql://be7e855bf7d62c:66cc4b48@eu-cdbr-west-01.cleardb.com/heroku_f373066c6c1d6bc?")
+
+DATABASES['default']['ENGINE'] = dj_database_url.config(
+    'django.db.backends.sqlite3'
+)
 
 ALLOWED_HOSTS = ['we-connect.herokuapp.com']
 
