@@ -21,7 +21,7 @@ DATABASES['default']['NAME'] = os.path.join(BASE_DIR, 'db.sqlite3')
 #
 # DATABASES['default'] = dj_database_url.parse(CLEAR_DB_URL)
 
-ALLOWED_HOSTS = ['we-connect.herokuapp.com']
+ALLOWED_HOSTS = ['we-connect.herokuapp.com', 'fb2eea7a.ngrok.io']
 
 # Paypal environment variables
 SITE_URL = 'https://we-connect.herokuapp.com/'

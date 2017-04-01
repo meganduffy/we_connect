@@ -15,5 +15,5 @@ DATABASES = {
 
 # Paypal environment variables
 SITE_URL = 'http://127.0.0.1:8000'
-PAYPAL_NOTIFY_URL = '<your ngrok URL>'
+PAYPAL_NOTIFY_URL = 'https://fb2eea7a.ngrok.io'
 PAYPAL_RECEIVER_EMAIL = 'meganemilyduffy@gmail.com'
