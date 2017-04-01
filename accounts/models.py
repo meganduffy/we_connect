@@ -31,6 +31,7 @@ class AccountUserManager(UserManager):
 
 class User(AbstractUser):
     objects = AccountUserManager()
+    last_login = models.DateTimeField(default=timezone.now())
     previous_login = models.DateTimeField(default=timezone.now())
     image = models.ImageField(upload_to='profile_images', blank=True, null=True)
 
