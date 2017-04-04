@@ -13,7 +13,8 @@ DATABASES = {
 DATABASES['default'] = dj_database_url.config(
     "mysql://b7df457a0b883e:4cc7bd23@eu-cdbr-west-01.cleardb.com/heroku_f73334689795fd1")
 
-
+DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+DATABASES['default']['NAME'] = 'heroku_f73334689795fd1'
 
 ALLOWED_HOSTS.append(['we-connect.herokuapp.com', 'fb2eea7a.ngrok.io'])
 
