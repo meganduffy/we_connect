@@ -15,7 +15,7 @@ DATABASES['default'] = dj_database_url.config(
 
 DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
-DATABASES['default']['NAME'] = os.path.join(BASE_DIR, 'db.sqlite3')
+DATABASES['default']['NAME'] = 'heroku_f373066c6c1d6bc'
 
 
 ALLOWED_HOSTS = ['we-connect.herokuapp.com', 'fb2eea7a.ngrok.io']
