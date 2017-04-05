@@ -33,14 +33,6 @@
 },
 {
     "model": "sites.site",
-    "pk": 2,
-    "fields": {
-        "domain": "example.com",
-        "name": "example.com"
-    }
-},
-{
-    "model": "sites.site",
     "pk": 3,
     "fields": {
         "domain": "localhost",
